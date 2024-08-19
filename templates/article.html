@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+
+{% block content %} 
+
+<div class= "container article">
+    <p class="title-text text">Controlling 28byj-48 Stepper Motor With an ESP32</p>
+    <p class="mini-title-text text"> INTRODUCTION </p>
+    <p class="paragraph-text text "> 
+        Controlling a 5V stepper motor with an ESP32 is a simple project that’s great for learning about electronics and robotics. 
+        Stepper motors are useful for tasks that need precise movements, like rotating a dial or moving a platform. 
+        The ESP32 is a powerful microcontroller with built-in Wi-Fi and Bluetooth, making it a great choice for modern projects. 
+        In this tutorial, we’ll cover how to connect a 5V stepper motor to an ESP32, wire the circuit, 
+        and write some basic code to control the motor. By the end, you’ll be ready to use this setup in your own projects.
+    </p>
+    <p class="text"> Materials used in this project: </p>
+</div>
+
+<div class="materials-box container article">
+
+    <!--Materials-->
+    <p class="material-text text"> 28BYJ-48 Stepper Motor-5V </p>
+    <p class="material-text text"> ULN2003 </p>
+    <p class="material-text text"> ESP32 Dev Module </p>
+    <p class="material-text text"> 5-12v Power Source </p>
+    <p class="material-text text"> Breadboard </p>
+    <p class="material-text text"> Jumper Wires </p>
+
+</div>
+
+<div class="container article">
+    <!-- Schematic Image -->
+    <img src="{{ url_for('static', filename='images/stepper-esp32-schematic.png') }}" alt="Schematic" width="100%" height="450">
+    <p class="figure-text"> Figure-1: Schematic Diagram </p>
+</div>
+
+<div class="container article">
+    <pre>
+        <code class="language-cpp">
+#include <Stepper.h>
+
+const int steps_per_rev = 2048;
+    
+Stepper Smol_Stepper(steps_per_rev, 19, 5, 18, 17);
+    
+void setup() {
+    Smol_Stepper.setSpeed(10);
+    
+    Serial.begin(9600);
+    
+}
+    
+void loop() {
+    
+    Smol_Stepper.step(steps_per_rev);
+    delay(1000);
+    Smol_Stepper.step(-steps_per_rev);
+    delay(1000);
+    
+}
+        </code>
+    </pre>
+</div>
+
+<div class="container article">
+    <!--Set up Image-->
+    <img src="https://placehold.co/800x450" alt="Blog Image" width="100%" height="450">
+    <p class="figure-text"> Figure-2: Set up </p>
+</div>
+
+{% endblock %}
+
+<!--
+(TASKS FOR NEXT WEB DEV SESSIONS)
+Add Comma to code snippet 
+Improve Code Block & Add a working copy button 
+Add more text for the article 
+Change Fonts
+"rozhino Shamal" logo
+add navigation hover line
+overall website design & colour 
+fix footer 
+organize css code
+check out react.js or similer
+git version control 
+-->
